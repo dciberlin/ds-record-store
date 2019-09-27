@@ -2,6 +2,16 @@
 
 This changelog is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each change.
 
+## Stage 5: Mongoose && Controllers
+
+In this branch we connected our controllers with our database.  
+No more Lowdb.  
+Mongoose is the [`future`](https://media.giphy.com/media/R0ulJyO72iuXe/giphy.gif).
+
+    - We updated all endpoints of each model using Mongoose.
+    - We deleted lowdb from our package.json
+    - Got rid of data folder with lowdb's data file.
+
 ## Stage 4: Mongoose && Models && Seeding
 
 In this branch we introduced Mongoose and we created our first models. We then created our first models.
