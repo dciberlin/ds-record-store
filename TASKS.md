@@ -2,6 +2,17 @@
 
 This file lists the changes that need to be made in each stage. It is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each task added.
 
+## Task 06 - Validation and Sanitization
+
+In this task we will introduce data validation. How we will we know that the format of the email the user inserted is valid? Using `express-validator` we will validate our data before we save them in our database. If something is not valid, we will return a detailed error message to the user. After validation, we will sanitize our data using `express-validator`. Validation is about making sure our data are in the right format. Sanitzation though is all about making sure the data are also noise-free. No extra spaces, no uppercase mixed with lowercase, normalized emails etc.
+
+**TODO**
+
+1. Install `express-validator`.
+2. Validate data for the user schema.
+3. After validation of the data, please sanitize them as well.
+4. In the end, please create a custom validation middleware boilerplate and bring all your validators there.
+
 ## Task 05 - Mongoose and Controllers
 
 In this task will update our controllers to start communicating with our database. `Lowdb` is no longer needed, so we will get rid of it's structure. We will dive into Mongoose API and introduce methods that establish communication with our database. Using Mongoose we will read data from the database, insert new records and manipulate already stored data. We will also introduce `Robo 3T`, a MongoDB GUI that will help us follow what is happening in our database whenever we update something.
