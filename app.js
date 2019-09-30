@@ -42,9 +42,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const validationParameters = () => {
   return [
-    check("email").isEmail(),
-    check("password").isLength({ min: 10 }),
-    check("firstName").exists()
+    check("email")
+      .isEmail()
+      .withMessage("Your email looks funky..."),
+    check("password")
+      .isLength({ min: 10 })
+      .withMessage("Minimum password length is 10"),
+    check("firstName")
+      .exists()
+      .withMessage("Please give us your first name.")
   ];
 };
 
