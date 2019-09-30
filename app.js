@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const { userValidationRules, validate } = require("./validators/validator");
 
 /** ROUTERS */
 const indexRouter = require("./routes/index");
@@ -42,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 /** ROUTES */
 app.use("/", indexRouter);
-app.use("/users", userValidationRules(), validate, usersRouter);
+app.use("/users", usersRouter);
 app.use("/records", recordsRouter);
 app.use("/orders", ordersRouter);
 
