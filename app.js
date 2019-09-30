@@ -4,7 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const { check } = require("express-validator");
+const { check, body, sanitizeBody } = require("express-validator");
 
 /** ROUTERS */
 const indexRouter = require("./routes/index");
@@ -42,14 +42,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const validationParameters = () => {
   return [
-    check("email")
+    body("email")
       .isEmail()
+      .normalizeEmail()
       .withMessage("Your email looks funky..."),
-    check("password")
+    body("password")
       .isLength({ min: 10 })
       .withMessage("Minimum password length is 10"),
-    check("firstName")
+    body("firstName")
       .exists()
+      .trim()
+      .escape()
       .withMessage("Please give us your first name.")
   ];
 };
