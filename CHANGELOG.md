@@ -2,6 +2,18 @@
 
 This changelog is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each change.
 
+## Stage 6: Mongoose && Controllers
+
+In this stage we added validation and sanitization on our user model using `express-validator`.
+
+    - We installed express-validator.
+    - Based on the express-validator documentation we created some simple rules
+      for data validation and sanitization.
+    - Once everythings worked as intented, we simplified our code by creating
+      a validator middleware method.
+    - Then we made our code even more beautiful and dynamic and so 2019 by splitting
+      the validation rules into a seperate directory.
+
 ## Stage 5: Mongoose && Controllers
 
 In this branch we connected our controllers with our database.  
