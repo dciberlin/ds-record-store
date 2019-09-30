@@ -3,9 +3,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
 const mongoose = require("mongoose");
+const { check } = require("express-validator");
 
 /** ROUTERS */
 const indexRouter = require("./routes/index");
@@ -32,15 +31,6 @@ mongoose.connection.on("open", function() {
   console.log("Database connection established...");
 });
 
-/** SETTING UP LOWDB */
-const adapter = new FileSync("data/db.json");
-const db = low(adapter);
-db.defaults({
-  records: [],
-  users: [],
-  orders: []
-}).write();
-
 /** REQUEST PARSERS */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -50,9 +40,17 @@ app.use(setCors);
 /** STATIC FILES*/
 app.use(express.static(path.join(__dirname, "public")));
 
+const validationParameters = () => {
+  return [
+    check("email").isEmail(),
+    check("password").isLength({ min: 10 }),
+    check("firstName").exists()
+  ];
+};
+
 /** ROUTES */
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/users", validationParameters(), usersRouter);
 app.use("/records", recordsRouter);
 app.use("/orders", ordersRouter);
 
