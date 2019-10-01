@@ -12,8 +12,7 @@ Relations relation relations. The fact is that MongoDB is a NoSQL database. It m
 
 1. Create a new schema called address containing a street and a city.
 2. Connect the address schema with our user schema (1-to-1).
-3. Update your controlles so when you create/delete/post/retrieve a new user, a new address will be created/deleted/posted/retrieved as well.
-4. Using refs, connect the record schema with the order one (1-to-many).
+3. Using refs, connect the record schema with the order one (1-to-many).
 
 ## Task 06 - Validation and Sanitization
 
