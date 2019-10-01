@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { validateInputs } = require("../middleware/validator");
 const { userValidationRules } = require("../lib/validation/userRules");
+const auth = require("../middleware/authenticator");
 
 const {
   getUsers,
@@ -17,7 +18,7 @@ router
   .get(getUsers)
   .post(validateInputs(userValidationRules), addUser);
 
-router.route("/me").get(authenticateUser);
+router.route("/me").get(auth, authenticateUser);
 
 router
   .route("/:id")

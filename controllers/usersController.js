@@ -67,13 +67,5 @@ exports.addUser = async (req, res, next) => {
 };
 
 exports.authenticateUser = async (req, res, next) => {
-  try {
-    const token = req.header("x-auth");
-    const user = await User.findByToken(token);
-    if (!user) throw new createError.NotFound();
-
-    res.send(user);
-  } catch (e) {
-    next(e);
-  }
+  res.send(req.user);
 };
