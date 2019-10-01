@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const Address = require("./Address");
 
 const UserSchema = new Schema(
   {
@@ -18,7 +19,8 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true
-    }
+    },
+    address: Address
   },
   {
     toObject: {
