@@ -6,10 +6,12 @@ const OrderSchema = new Schema({
     type: Number,
     required: true
   },
-  record: {
-    type: String,
-    required: true
-  }
+  record: [
+    {
+      ref: "Record",
+      type: mongoose.Schema.Types.ObjectId
+    }
+  ]
 });
 
 module.exports = mongoose.model("Order", OrderSchema);
