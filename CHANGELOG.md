@@ -2,6 +2,17 @@
 
 This changelog is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each change.
 
+## Stage 7: Relations
+
+Here we introduces realtions between our data
+
+    - We created a new schema for address
+    - We embeded the address schema in our user schema
+    - We created a 1-to-many relation between orders and records.
+    - We populated the above relation
+    - We cleaned out our data by returning only what we needed using select.
+    - We played around with our queries using filter, sort and limit.
+
 ## Stage 6: Mongoose && Controllers
 
 In this stage we added validation and sanitization on our user model using `express-validator`.
