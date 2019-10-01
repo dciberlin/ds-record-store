@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const Address = require("./Address");
 const jwt = require("jsonwebtoken");
+const superSecretKey = "superSecretKey";
 
 const UserSchema = new Schema(
   {
@@ -57,12 +58,29 @@ UserSchema.methods.generateAuthToken = function() {
   const access = "auth";
 
   const token = jwt
-    .sign({ _id: user._id.toHexString(), access }, "superSecretKey")
+    .sign({ _id: user._id.toHexString(), access }, superSecretKey)
     .toString();
 
   user.tokens.push({ access, token });
 
   return token;
+};
+
+UserSchema.statics.findByToken = function(token) {
+  const User = this;
+  let decoded;
+
+  try {
+    decoded = jwt.verify(token, superSecretKey);
+  } catch (e) {
+    return;
+  }
+
+  return User.findOne({
+    _id: decoded._id,
+    "tokens.token": token,
+    "tokens.access": "auth"
+  }).select("-password -__v");
 };
 
 module.exports = mongoose.model("User", UserSchema);
