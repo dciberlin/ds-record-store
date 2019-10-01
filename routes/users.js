@@ -16,7 +16,7 @@ const {
 router
   .route("/")
   .get(auth, getUsers)
-  .post(validateInputs(userValidationRules), auth, addUser);
+  .post(validateInputs(userValidationRules), addUser);
 
 router.route("/me").get(auth, authenticateUser);
 

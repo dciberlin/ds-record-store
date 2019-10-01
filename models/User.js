@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 const Address = require("./Address");
 const jwt = require("jsonwebtoken");
 const superSecretKey = "superSecretKey";
+const encryption = require("../lib/validation/encryption");
 
 const UserSchema = new Schema(
   {
@@ -66,6 +67,17 @@ UserSchema.methods.generateAuthToken = function() {
   return token;
 };
 
+UserSchema.methods.getPublicFields = function() {
+  var returnObject = {
+    firstName: this.firstName,
+    lastName: this.lastName,
+    email: this.email,
+    _id: this._id
+  };
+
+  return returnObject;
+};
+
 UserSchema.statics.findByToken = function(token) {
   const User = this;
   let decoded;
@@ -82,5 +94,12 @@ UserSchema.statics.findByToken = function(token) {
     "tokens.access": "auth"
   }).select("-password -__v");
 };
+
+UserSchema.pre("save", async function(next) {
+  if (!this.isModified("password")) return next();
+
+  this.password = await encryption.encrypt(this.password);
+  next();
+});
 
 module.exports = mongoose.model("User", UserSchema);

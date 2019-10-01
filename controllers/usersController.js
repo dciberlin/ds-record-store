@@ -57,10 +57,12 @@ exports.addUser = async (req, res, next) => {
     const user = new User(req.body);
     const token = user.generateAuthToken();
     await user.save();
+    const data = user.getPublicFields();
+
     res
       .status(200)
       .header("x-auth", token)
-      .send(user);
+      .send(data);
   } catch (e) {
     next(e);
   }
