@@ -10,7 +10,8 @@ const {
   updateUser,
   deleteUser,
   addUser,
-  authenticateUser
+  authenticateUser,
+  loginUser
 } = require("../controllers/usersController");
 
 router
@@ -19,6 +20,7 @@ router
   .post(validateInputs(userValidationRules), addUser);
 
 router.route("/me").get(auth, authenticateUser);
+router.route("/login").post(loginUser);
 
 router
   .route("/:id")

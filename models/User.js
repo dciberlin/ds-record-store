@@ -78,6 +78,11 @@ UserSchema.methods.getPublicFields = function() {
   return returnObject;
 };
 
+UserSchema.methods.checkPassword = async function(password) {
+  const user = this;
+  return await encryption.compare(password, user.password);
+};
+
 UserSchema.statics.findByToken = function(token) {
   const User = this;
   let decoded;
