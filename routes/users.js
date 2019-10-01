@@ -15,15 +15,15 @@ const {
 
 router
   .route("/")
-  .get(getUsers)
-  .post(validateInputs(userValidationRules), addUser);
+  .get(auth, getUsers)
+  .post(validateInputs(userValidationRules), auth, addUser);
 
 router.route("/me").get(auth, authenticateUser);
 
 router
   .route("/:id")
-  .get(getUser)
-  .delete(deleteUser)
-  .put(updateUser);
+  .get(auth, getUser)
+  .delete(auth, deleteUser)
+  .put(auth, updateUser);
 
 module.exports = router;
