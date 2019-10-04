@@ -12,6 +12,8 @@ const recordsRouter = require("./routes/records");
 const ordersRouter = require("./routes/orders");
 const { setCors } = require("./middleware/security");
 
+/** CONFIGS */
+const env = require("./config/config.js");
 /** INIT */
 const app = express();
 
@@ -19,7 +21,7 @@ const app = express();
 app.use(logger("dev"));
 
 /**CONNECT TO DB */
-mongoose.connect("mongodb://localhost:27017/record-shop", {
+mongoose.connect(env.db, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
