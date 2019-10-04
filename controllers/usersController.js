@@ -68,10 +68,6 @@ exports.addUser = async (req, res, next) => {
   }
 };
 
-exports.authenticateUser = async (req, res, next) => {
-  res.send(req.user);
-};
-
 exports.loginUser = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
