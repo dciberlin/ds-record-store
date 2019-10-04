@@ -2,6 +2,10 @@
 
 This file lists the changes that need to be made in each stage. It is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each task added.
 
+## Task 09 - Deployment
+
+Our app is working and it's ready for deployment. In this last task we will learn how to setup a configuration boilerplate for our enviroments. We will hide our secrets so they are not accessible in our code. After that we will deploy our application and test it.
+
 ## Task 08 - Authentication
 
 Our app works well up until now but it's not secure at all at the moment. Anybody can delete another users account using their id, passwords are not hashed so they are easy to be compromised and there is no authentication taking place anywhere. We will set up a way to authenticate each call using Json Web Tokens, so each user can manage only information created by them.
