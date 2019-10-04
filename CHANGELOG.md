@@ -7,8 +7,12 @@ This changelog is ordered in reverse chronological order, meaning that the last 
 In this step we worked on authentication and we updated a lot of stuff. Let's go step by step.
 
     -  We added a JWT whenever a user was created and we return the token in a header.
-    -  We set up a temp /me path for setting up an authenticator function what will let   requests pass only if the right token is send as a header.
-    -  We then moved the whole logic to a seperate middleware function and we used it for all the endpoints we would like to be authenticated.
+    -  We set up a temp /me path for setting up an authenticator function what will let
+       requests pass only if the right token is send as a header.
+    -  We then moved the whole logic to a seperate middleware function and we used it
+       for all the endpoints we would like to be authenticated.
+    -  We added password hashing so our passwords our now safely stored.
+    -  We added a login endpoint for the users to log in.
 
 ## Stage 7: Relations
 
