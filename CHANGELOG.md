@@ -2,6 +2,16 @@
 
 This changelog is ordered in reverse chronological order, meaning that the last changes made will always be on top of the file, so that readers will not have to scroll all the way down with each change.
 
+## State 9 - Deployment
+
+[Yeahhh we managed to deploy our app and it works!!!!!](https://i.giphy.com/media/4xpB3eE00FfBm/giphy.webp)
+
+Let's list out what we did in the last stage:
+
+    - We created a cofiguration file that handles our secrets.
+    - We set up a database in our mLab account and connected it to our app.
+    - We set up our now.json file and deployed our application using now.
+
 ## Stage 8: Authentication
 
 In this step we worked on authentication and we updated a lot of stuff. Let's go step by step.
