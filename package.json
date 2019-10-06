@@ -7,7 +7,8 @@
     "watch": "DEBUG=record-shop:* nodemon --inspect ./bin/www",
     "remote": "NODE_ENV=production DEBUG=record-shop:* nodemon --inspect ./bin/www",
     "seed": "node seed/seed_db.js",
-    "purge": "node seed/purge_db.js"
+    "purge": "node seed/purge_db.js",
+    "build": "node build --output public"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
