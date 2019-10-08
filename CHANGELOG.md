@@ -23,6 +23,8 @@ In this step we worked on authentication and we updated a lot of stuff. Let's go
        for all the endpoints we would like to be authenticated.
     -  We added password hashing so our passwords our now safely stored.
     -  We added a login endpoint for the users to log in.
+    -  We added user roles and an authenticator for the paths that
+       should only be accessible from an Admin user.
 
 ## Stage 7: Relations
 
